@@ -1,6 +1,6 @@
 img {
     width: 100%;
-    /* min-height: 270px; */
+    min-height: 170px;
 }
 
 #app {
@@ -9,5 +9,6 @@ img {
 }
 
 #bg {
+    max-height: 170px;
     background-color: hsl(180, 29%, 50%);
 }
