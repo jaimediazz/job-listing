@@ -1,10 +1,22 @@
-<div id="job-card">
+<div id="job-card" [ngClass]="job.featured ? 'featured-job' : ''">
     <img id="logo" [src]="job.logo" alt="logo">
     <div id="info">
-        <span>{{ job.company }}</span>
-        <span>{{ job.company }}</span>
+        <div id="first-line">
+            <span class="cyan-text">{{ job.company }}</span>
+            <span id="new" *ngIf="job.new">NEW!</span>
+            <span id="featured" *ngIf="job.featured">FEATURED</span>
+        </div>
+        <div>
+            <span class="cyan-text">{{ job.position }}</span>
+        </div>
+        <div>
+            <span class="dark-cyan-text">{{ job.postedAt }} · {{ job.contract }} · {{ job.location }}</span>
+        </div>
     </div>
     <div id="categories">
-        <span>{{ job.role }}</span>
+        <button class="cyan-text">{{ job.role }}</button>
+        <button class="cyan-text">{{ job.level }}</button>
+        <button class="cyan-text" *ngFor="let language of job.languages">{{ language }}</button>
+        <button class="cyan-text" *ngFor="let tool of job.tools">{{ tool }}</button>
     </div>
 </div>

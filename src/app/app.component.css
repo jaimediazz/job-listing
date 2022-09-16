@@ -4,8 +4,7 @@ img {
 }
 
 #app {
-    display: flex;
-    flex-direction: column;
+    background-color: hsl(180, 52%, 96%);
 }
 
 #bg {
@@ -14,8 +13,7 @@ img {
 }
 
 #job-list {
-    background-color: hsl(180, 52%, 96%);
-    padding-top: 3rem;
+    margin-top: 3rem;
 }
 
 #job-list:last-child {
