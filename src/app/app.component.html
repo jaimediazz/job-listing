@@ -2,7 +2,7 @@
   <div id="bg">
     <img src="../assets/bg-header-desktop.svg" alt="bg-desktop">
   </div>
-  <div id="job-list">
-    <app-job-card></app-job-card>
+  <div id="job-list" *ngFor="let job of jobList">
+    <app-job-card [job]="job"></app-job-card>
   </div>
 </div>

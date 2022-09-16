@@ -15,5 +15,9 @@ img {
 
 #job-list {
     background-color: hsl(180, 52%, 96%);
-    padding: 3rem 0;
+    padding-top: 3rem;
+}
+
+#job-list:last-child {
+    padding-bottom: 3em;
 }

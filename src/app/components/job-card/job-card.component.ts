@@ -1,6 +1,4 @@
-import { Component } from '@angular/core';
-
-import jobsData from '../../../../fixtures/data.json';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-job-card',
@@ -8,6 +6,6 @@ import jobsData from '../../../../fixtures/data.json';
   styleUrls: ['./job-card.component.css']
 })
 export class JobCardComponent {
-  jobList: any = jobsData;
+  @Input() job: any;
 
 }
