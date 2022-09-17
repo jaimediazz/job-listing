@@ -9,7 +9,12 @@ import jobsData from '../../fixtures/data.json';
 })
 export class AppComponent {
   jobList: any = jobsData;
-  filters: any;
+  filters: any = {
+    "role": "",
+    "level": "",
+    "languages": new Set(),
+    "tools": new Set()
+  };
 
   private jobFilter = (category: any, value: any) => {
     var props = this;
@@ -17,7 +22,7 @@ export class AppComponent {
     if(category === "languages" || category === "tools") {
       filter = {
         [category]: function(props: any) {
-          return props.jobList.filter((jobs: any) => jobs[category].includes(value));
+          return props.jobList.filter((jobs: any) => value.every((el: any) => jobs[category].includes(el)));
         }
       }
     } else {
@@ -32,30 +37,94 @@ export class AppComponent {
   }
 
   filterByRole(role: any) {
-    /* this.jobList = this.jobList.filter((job: any) => job.role === role); */
     this.filters = { ...this.filters, "role": role };
-    console.log("filters: ", this.filters);
     this.jobFilter("role", role);
   }
 
   filterByLevel(level: any) {
-    /* this.jobList = this.jobList.filter((job: any) => job.level === level); */
     this.filters = { ...this.filters, "level": level };
-    console.log("filters: ", this.filters);
     this.jobFilter("level", level);
   }
 
   filterByLanguage(language: any) {
-    console.log("language: ", language);
-    this.filters = { ...this.filters, "language": language };
-    console.log("filters: ", this.filters);
-    this.jobFilter("languages", language);
+    this.filters = { ...this.filters, "languages": this.filters.languages.add(language) };
+    this.jobFilter("languages", [...this.filters.languages]);
   }
   
   filterByTool(tool: any) {
-    console.log("tool", tool);
-    this.filters = { ...this.filters, "tool": tool };
-    console.log("filters: ", this.filters);
-    this.jobFilter("tools", tool);
+    this.filters = { ...this.filters, "tools": this.filters.tools.add(tool) };
+    this.jobFilter("tools", [...this.filters.tools]);
   }
+
+  clearFilters() {
+    this.jobList = jobsData;
+    this.filters = {
+      "role": "",
+      "level": "",
+      "languages": new Set(),
+      "tools": new Set()      
+    }
+  }
+
+  deleteRoleFilter() {
+    this.jobList = jobsData;
+    this.filters.role = '';
+    if(this.filters.level !== "") {
+      this.jobFilter("level", this.filters.level);      
+    }
+    if(this.filters.languages.size !== 0) {
+      this.jobFilter("languages", [...this.filters.languages]);      
+    }  
+    if(this.filters.tools.size !== 0) {
+      this.jobFilter("tools", [...this.filters.tools]);      
+    }        
+  }
+
+  deleteLevelFilter() {
+    this.jobList = jobsData;
+    this.filters.level = '';
+    if(this.filters.role !== "") {
+      this.jobFilter("role", this.filters.role);      
+    }
+    if(this.filters.languages.size !== 0) {
+      this.jobFilter("languages", [...this.filters.languages]);      
+    }  
+    if(this.filters.tools.size !== 0) {
+      this.jobFilter("tools", [...this.filters.tools]);      
+    }        
+  }  
+
+  deleteLanguageFilter(language: any) {
+    this.jobList = jobsData;
+    this.filters.languages.delete(language);
+    if(this.filters.role !== "") {
+      this.jobFilter("role", this.filters.role);      
+    }
+    if(this.filters.level !== "") {
+      this.jobFilter("level", this.filters.level);      
+    }    
+    if(this.filters.languages.size !== 0) {
+      this.jobFilter("languages", [...this.filters.languages]);      
+    }  
+    if(this.filters.tools.size !== 0) {
+      this.jobFilter("tools", [...this.filters.tools]);      
+    }        
+  }   
+
+  deleteToolFilter(tool: any) {
+    this.jobList = jobsData;
+    this.filters.tools.delete(tool);
+    if(this.filters.role !== "") {
+      this.jobFilter("role", this.filters.role);      
+    }
+    if(this.filters.level !== "") {
+      this.jobFilter("level", this.filters.level);      
+    }    
+    if(this.filters.languages.size !== 0) {
+      this.jobFilter("languages", [...this.filters.languages]);      
+    }  
+    if(this.filters.tools.size !== 0) {
+      this.jobFilter("tools", [...this.filters.tools]);      
+    }        
+  }   
 }

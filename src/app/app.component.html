@@ -11,3 +11,26 @@
       (toolFilterEvent)="filterByTool($event)"></app-job-card>
   </div>
 </div>
+
+<div id="filters"
+  *ngIf="filters.role !== '' || filters.level !== '' || filters.languages.size !== 0 || filters.tools.size !== 0">
+  <div id="filterTablets">
+    <div *ngIf="filters.role !== ''">
+      <span>{{ filters.role }}</span>
+      <button (click)="deleteRoleFilter()">X</button>
+    </div>
+    <div *ngIf="filters.level !== ''">
+      <span>{{ filters.level }}</span>
+      <button (click)="deleteLevelFilter()">X</button>
+    </div>
+    <div *ngFor="let language of filters.languages">
+      <span>{{ language }}</span>
+      <button (click)="deleteLanguageFilter(language)">X</button>
+    </div>
+    <div *ngFor="let tool of filters.tools">
+      <span>{{ tool }}</span>
+      <button (click)="deleteToolFilter(tool)">X</button>
+    </div>
+  </div>
+  <button (click)="clearFilters()">Clear</button>
+</div>  
