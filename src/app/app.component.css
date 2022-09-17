@@ -10,15 +10,32 @@ span {
     background-color: hsl(180, 31%, 95%);
 }
 
-button {
+#clear-filters-button {
     font-family: "League Spartan", sans-serif;
     font-weight: 700;    
     background-color: transparent;
     color: hsl(180, 8%, 52%);
+    padding: 0;
     border: none;
 }
 
+.remove-filter-button {
+    font-family: "League Spartan", sans-serif;
+    font-weight: 700; 
+    background-color: hsl(180, 29%, 50%);
+    border: none;
+    border-radius: 0 5px 5px 0;
+    padding: .5rem .5rem;
+    color: white;
+}
+
 #app {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
     background-color: hsl(180, 52%, 96%);
 }
 
@@ -44,7 +61,6 @@ button {
     top: 144px;
     left: 15%;
     width: 70%;
-    margin: 0 auto;
     border-radius: 5px;
     background-color: white;
 }
@@ -55,11 +71,21 @@ button {
 
 #filterTablets {
     display: flex;
+    flex-wrap: wrap;
+}
+
+#filterTablets span {
+    padding: .5rem .5rem;
+    border-radius: 5px 0 0 5px;
+}
+
+#filterTablets > * {
+    margin-right: .5rem;
 }
 
 /* EVENTS */
 
-button:hover {
+#clear-filters-button:hover {
     border-bottom: 1px solid hsl(180, 29%, 50%);
     cursor: pointer;
     color: hsl(180, 29%, 50%);

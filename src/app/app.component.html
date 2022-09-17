@@ -17,20 +17,20 @@
   <div id="filterTablets">
     <div *ngIf="filters.role !== ''">
       <span>{{ filters.role }}</span>
-      <button (click)="deleteRoleFilter()">X</button>
+      <button class="remove-filter-button" (click)="deleteRoleFilter()">X</button>
     </div>
     <div *ngIf="filters.level !== ''">
       <span>{{ filters.level }}</span>
-      <button (click)="deleteLevelFilter()">X</button>
+      <button class="remove-filter-button" (click)="deleteLevelFilter()">X</button>
     </div>
     <div *ngFor="let language of filters.languages">
       <span>{{ language }}</span>
-      <button (click)="deleteLanguageFilter(language)">X</button>
+      <button class="remove-filter-button" (click)="deleteLanguageFilter(language)">X</button>
     </div>
     <div *ngFor="let tool of filters.tools">
       <span>{{ tool }}</span>
-      <button (click)="deleteToolFilter(tool)">X</button>
+      <button class="remove-filter-button" (click)="deleteToolFilter(tool)">X</button>
     </div>
   </div>
-  <button (click)="clearFilters()">Clear</button>
+  <button id="clear-filters-button" (click)="clearFilters()">Clear</button>
 </div>  
