@@ -13,6 +13,8 @@ button {
     border: none;    
 }
 
+/* LAYOUT */
+
 #job-card {
     display: flex;
     justify-content: space-between;
@@ -72,4 +74,11 @@ button {
 
 .dark-cyan-text {
     color: hsl(180, 8%, 52%);
+}
+
+/* EVENTS */
+button:hover {
+    background-color: hsl(180, 29%, 50%);
+    color: white;
+    cursor: pointer;
 }

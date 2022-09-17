@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-job-card',
@@ -8,4 +8,8 @@ import { Component, Input } from '@angular/core';
 export class JobCardComponent {
   @Input() job: any;
 
+  @Output() roleFilterEvent = new EventEmitter();
+  @Output() levelFilterEvent = new EventEmitter();
+  @Output() languageFilterEvent = new EventEmitter();
+  @Output() toolFilterEvent = new EventEmitter();
 }

@@ -14,9 +14,15 @@
         </div>
     </div>
     <div id="categories">
-        <button class="cyan-text">{{ job.role }}</button>
-        <button class="cyan-text">{{ job.level }}</button>
-        <button class="cyan-text" *ngFor="let language of job.languages">{{ language }}</button>
-        <button class="cyan-text" *ngFor="let tool of job.tools">{{ tool }}</button>
+        <button class="cyan-text" (click)="roleFilterEvent.emit(job.role)">{{ job.role }}</button>
+        <button class="cyan-text" (click)="levelFilterEvent.emit(job.level)">{{ job.level }}</button>
+        <button 
+            class="cyan-text" 
+            *ngFor="let language of job.languages"
+            (click)="languageFilterEvent.emit(language)">{{ language }}</button>
+        <button 
+            class="cyan-text" 
+            *ngFor="let tool of job.tools"
+            (click)="toolFilterEvent.emit(tool)">{{ tool }}</button>
     </div>
 </div>
