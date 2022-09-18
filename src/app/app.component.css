@@ -90,3 +90,11 @@ span {
     cursor: pointer;
     color: hsl(180, 29%, 50%);
 }
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 900px) {
+    #job-list {
+        margin-top: 8rem;
+    }
+}

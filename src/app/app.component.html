@@ -1,6 +1,28 @@
 <div id="app">
   <div id="bg">
     <img src="../assets/bg-header-desktop.svg" alt="bg-desktop">
+    <div id="filters"
+      *ngIf="filters.role !== '' || filters.level !== '' || filters.languages.size !== 0 || filters.tools.size !== 0">
+      <div id="filterTablets">
+        <div *ngIf="filters.role !== ''">
+          <span>{{ filters.role }}</span>
+          <button class="remove-filter-button" (click)="deleteRoleFilter()">X</button>
+        </div>
+        <div *ngIf="filters.level !== ''">
+          <span>{{ filters.level }}</span>
+          <button class="remove-filter-button" (click)="deleteLevelFilter()">X</button>
+        </div>
+        <div *ngFor="let language of filters.languages">
+          <span>{{ language }}</span>
+          <button class="remove-filter-button" (click)="deleteLanguageFilter(language)">X</button>
+        </div>
+        <div *ngFor="let tool of filters.tools">
+          <span>{{ tool }}</span>
+          <button class="remove-filter-button" (click)="deleteToolFilter(tool)">X</button>
+        </div>
+      </div>
+      <button id="clear-filters-button" (click)="clearFilters()">Clear</button>
+    </div>      
   </div>
   <div id="job-list" *ngFor="let job of jobList">
     <app-job-card 
@@ -11,26 +33,3 @@
       (toolFilterEvent)="filterByTool($event)"></app-job-card>
   </div>
 </div>
-
-<div id="filters"
-  *ngIf="filters.role !== '' || filters.level !== '' || filters.languages.size !== 0 || filters.tools.size !== 0">
-  <div id="filterTablets">
-    <div *ngIf="filters.role !== ''">
-      <span>{{ filters.role }}</span>
-      <button class="remove-filter-button" (click)="deleteRoleFilter()">X</button>
-    </div>
-    <div *ngIf="filters.level !== ''">
-      <span>{{ filters.level }}</span>
-      <button class="remove-filter-button" (click)="deleteLevelFilter()">X</button>
-    </div>
-    <div *ngFor="let language of filters.languages">
-      <span>{{ language }}</span>
-      <button class="remove-filter-button" (click)="deleteLanguageFilter(language)">X</button>
-    </div>
-    <div *ngFor="let tool of filters.tools">
-      <span>{{ tool }}</span>
-      <button class="remove-filter-button" (click)="deleteToolFilter(tool)">X</button>
-    </div>
-  </div>
-  <button id="clear-filters-button" (click)="clearFilters()">Clear</button>
-</div>  
